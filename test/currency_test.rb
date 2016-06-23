@@ -8,27 +8,27 @@ class CurrencyTest < MiniTest::Test
   end
 
   def test_currency_exists
-    assert currency(100, "$")
+    assert currency(100, "USD")
   end
 
   def test_currency_equivalence
-    assert_equal currency(100, "$"), currency(100, "$")
+    assert_equal currency(100, "USD"), currency(100, "USD")
   end
 
   def test_currency_non_equivalence
-    refute_equal currency(100, "$"), currency(100, "¢")
-    refute_equal currency(50, "$"), currency(100, "$")
+    refute_equal currency(100, "USD"), currency(100, "EUR")
+    refute_equal currency(50, "USD"), currency(100, "USD")
     refute_equal currency(40, "potatoes"), currency(5, "gameboys")
   end
 
   def test_currency_addition
-    added_currency = currency(50, "$") + currency(50, "$")
-    assert_equal added_currency, currency(100, "$")
+    added_currency = currency(50, "USD") + currency(50, "USD")
+    assert_equal added_currency, currency(100, "USD")
   end
 
   def test_currency_subtraction
-    subtracted_currency = currency(100, "$") - currency(50, "$")
-    assert_equal subtracted_currency, currency(50, "$")
+    subtracted_currency = currency(100, "USD") - currency(50, "USD")
+    assert_equal subtracted_currency, currency(50, "USD")
   end
 
   def test_for_wrong_type_error
@@ -36,9 +36,9 @@ class CurrencyTest < MiniTest::Test
   end
 
   def test_currency_multiplication
-    multiplied_currency = currency(100, "$") * 2
-    assert_equal multiplied_currency, currency(200, "$")
-    multiplied_currency = currency(100, "$") * 0.5
-    assert_equal multiplied_currency, currency(50, "$")
+    multiplied_currency = currency(100, "USD") * 2
+    assert_equal multiplied_currency, currency(200, "USD")
+    multiplied_currency = currency(100, "USD") * 0.5
+    assert_equal multiplied_currency, currency(50, "USD")
   end
 end
