@@ -20,4 +20,9 @@ class CurrencyTest < MiniTest::Test
     refute_equal currency(50, "$"), currency(100, "$")
     refute_equal currency(40, "potatoes"), currency(5, "gameboys")
   end
+
+  def test_currency_addition
+    add_currency = currency(50, "$") + currency(50, "$")
+    assert_equal add_currency, currency(100, "$")
+  end
 end
