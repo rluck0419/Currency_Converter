@@ -34,4 +34,11 @@ class CurrencyTest < MiniTest::Test
   def test_for_wrong_type_error
     assert_raises(Invalid_Type) do currency(5, "doll hairs") + currency(5, "dollars") end
   end
+
+  def test_currency_multiplication
+    multiplied_currency = currency(100, "$") * 2
+    assert_equal multiplied_currency, currency(200, "$")
+    multiplied_currency = currency(100, "$") * 0.5
+    assert_equal multiplied_currency, currency(50, "$")
+  end
 end

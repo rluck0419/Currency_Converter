@@ -26,4 +26,9 @@ class Currency
     raise Invalid_Type.new unless other.is_a?(Currency) && @type == other.type
     Currency.new(@amount - other.amount, @type)
   end
+
+  def *(other)
+    raise Invalid_Type.new unless other.is_a?(Fixnum) || other.is_a?(Float)
+    Currency.new(@amount * other, @type)
+  end
 end
