@@ -14,4 +14,10 @@ class CurrencyTest < MiniTest::Test
   def test_currency_equivalence
     assert_equal currency(100, "$"), currency(100, "$")
   end
+
+  def test_currency_non_equivalence
+    refute_equal currency(100, "$"), currency(100, "¢")
+    refute_equal currency(50, "$"), currency(100, "$")
+    refute_equal currency(40, "potatoes"), currency(5, "gameboys")
+  end
 end
