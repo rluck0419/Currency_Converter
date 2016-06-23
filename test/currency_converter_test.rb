@@ -4,8 +4,8 @@ require_relative '../lib/currency_converter.rb'
 require_relative '../lib/currency.rb'
 
 class CurrencyConverterTest < MiniTest::Test
-  def currency_converter
-    ::CurrencyConverter.new
+  def currency_converter(codes)
+    ::CurrencyConverter.new(codes)
   end
 
   def currency(amount, type)
@@ -13,16 +13,25 @@ class CurrencyConverterTest < MiniTest::Test
   end
 
   def test_currency_converter_exists
-    assert currency_converter
+    codes = {USD: 1.0, EUR: 0.88}
+    assert currency_converter(codes)
   end
 
   def test_currency_converter_codes
-    codes = {USD: 1.0, EUR: 0.87}
-    assert_equal currency_converter.codes, codes
+    codes = {USD: 1.0, EUR: 0.88}
+    assert_equal currency_converter(codes).codes, codes
   end
 
-  def test_currency_convert
-    assert_equal currency_converter.convert(currency(100,"USD"), "EUR"), currency(87,"EUR")
-    assert_equal currency_converter.convert(currency(87,"EUR"), "USD"), currency(100,"USD")
+  def test_currency_convert_two
+    codes = {USD: 1.0, EUR: 0.88}
+    assert_equal currency_converter(codes).convert(currency(100,"USD"), "EUR"), currency(88, "EUR")
+    assert_equal currency_converter(codes).convert(currency(88,"EUR"), "USD"), currency(100,"USD")
+  end
+
+  def test_currency_convert_three
+    codes = {USD: 1.0, EUR: 0.88, GBP: 0.67}
+    assert_equal currency_converter(codes).convert(currency(100,"USD"), "EUR"), currency(88, "EUR")
+    assert_equal currency_converter(codes).convert(currency(88,"EUR"), "USD"), currency(100, "USD")
+    assert_equal currency_converter(codes).convert(currency(100,"USD"), "GBP"), currency(67, "GBP")
   end
 end
