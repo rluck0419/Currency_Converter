@@ -33,5 +33,6 @@ class CurrencyConverterTest < MiniTest::Test
     assert_equal currency_converter(codes).convert(currency(100,"USD"), "EUR"), currency(88, "EUR")
     assert_equal currency_converter(codes).convert(currency(88,"EUR"), "USD"), currency(100, "USD")
     assert_equal currency_converter(codes).convert(currency(100,"USD"), "GBP"), currency(67, "GBP")
+    assert_equal currency_converter(codes).convert(currency(88,"EUR"), "GBP"), currency(67, "GBP")
   end
 end
