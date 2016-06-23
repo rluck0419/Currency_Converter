@@ -30,4 +30,8 @@ class CurrencyTest < MiniTest::Test
     subtracted_currency = currency(100, "$") - currency(50, "$")
     assert_equal subtracted_currency, currency(50, "$")
   end
+
+  def test_for_wrong_type_error
+    assert_raises(Invalid_Type) do currency(5, "doll hairs") + currency(5, "dollars") end
+  end
 end

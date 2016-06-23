@@ -1,6 +1,6 @@
-class Invalid_Unit < StandardError
+class Invalid_Type < StandardError
   def message
-    "Entry is not the correct unit for conversion, cannot be added or subtracted."
+    "The different currencies cannot be added or subtracted until they are converted to the same currency."
   end
 end
 
@@ -18,12 +18,12 @@ class Currency
   end
 
   def +(other)
-    raise Invalid_Unit.new unless other.is_a?(Currency) && @type == other.type#if you give me something that's not a meter, I'm going to throw you an error.
+    raise Invalid_Type.new unless other.is_a?(Currency) && @type == other.type#if you give me something that's not a meter, I'm going to throw you an error.
     Currency.new(@amount + other.amount, @type)
   end
 
   def -(other)
-    raise Invalid_Unit.new unless other.is_a?(Currency) && @type == other.type
+    raise Invalid_Type.new unless other.is_a?(Currency) && @type == other.type
     Currency.new(@amount - other.amount, @type)
   end
 end
