@@ -22,7 +22,12 @@ class CurrencyTest < MiniTest::Test
   end
 
   def test_currency_addition
-    add_currency = currency(50, "$") + currency(50, "$")
-    assert_equal add_currency, currency(100, "$")
+    added_currency = currency(50, "$") + currency(50, "$")
+    assert_equal added_currency, currency(100, "$")
+  end
+
+  def test_currency_subtraction
+    subtracted_currency = currency(100, "$") - currency(50, "$")
+    assert_equal subtracted_currency, currency(50, "$")
   end
 end
