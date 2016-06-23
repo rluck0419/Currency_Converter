@@ -18,7 +18,7 @@ class Currency
   end
 
   def +(other)
-    raise Invalid_Type.new unless other.is_a?(Currency) && @type == other.type#if you give me something that's not a meter, I'm going to throw you an error.
+    raise Invalid_Type.new unless other.is_a?(Currency) && @type == other.type
     Currency.new(@amount + other.amount, @type)
   end
 
