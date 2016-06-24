@@ -49,5 +49,8 @@ class CurrencyTest < MiniTest::Test
     assert_equal currency("$100"), currency(100, "USD")
     assert_equal currency("$100", "USD"), currency("100", "USD")
     assert_equal currency("¥100"), currency(100, "JPY")
+    assert_equal currency(100.0, "USD"), currency(100, "USD")
+    assert_equal currency(100.50, "USD"), currency("100.50", "USD")
+    assert_equal currency(100.50, "USD"), currency("$100.50", "USD")
   end
 end

@@ -13,7 +13,7 @@ class Currency
       @amount = amount
       @type = type
     else
-      @amount = amount[/\d+/].to_f
+      @amount = amount[/\d+[.]\d+|\d+/].to_f
       @type = type
       if CODES.key?(amount[/\D/])
         @type = CODES.fetch(amount[/\D/])
