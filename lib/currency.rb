@@ -8,7 +8,11 @@ class Currency
   attr_reader :amount, :type
 
   def initialize(amount, type)
-    @amount = amount
+    if amount.is_a?(Fixnum) || amount.is_a?(Float)
+      @amount = amount
+    else
+      @amount = amount[/\d+/].to_f
+    end
     @type = type
   end
 

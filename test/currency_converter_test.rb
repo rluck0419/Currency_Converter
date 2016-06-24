@@ -24,6 +24,7 @@ class CurrencyConverterTest < MiniTest::Test
 
   def test_currency_convert_two
     codes = {USD: 1.0, EUR: 0.88}
+    assert_equal currency_converter(codes).convert(currency(100, "USD"), "USD"), currency(100, "USD")
     assert_equal currency_converter(codes).convert(currency(100, "USD"), "EUR"), currency(88, "EUR")
     assert_equal currency_converter(codes).convert(currency(88, "EUR"), "USD"), currency(100,"USD")
   end

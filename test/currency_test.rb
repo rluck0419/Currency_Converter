@@ -41,4 +41,10 @@ class CurrencyTest < MiniTest::Test
     multiplied_currency = currency(100, "USD") * 0.5
     assert_equal multiplied_currency, currency(50, "USD")
   end
+
+  def test_input_equivalence
+    assert_equal currency("100", "USD"), currency(100, "USD")
+    assert_equal currency("$100", "USD"), currency(100, "USD")
+    refute_equal currency("100¢", "USD"), currency(100, "USD")
+  end
 end
