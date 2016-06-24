@@ -22,6 +22,14 @@ class CurrencyTraderTest < MiniTest::Test
     ::Currency.new(amount, type)
   end
 
+  def test_currency_exists
+    assert currency(100, "USD")
+  end
+
+  def test_currency_converter_exists
+    assert currency_converter(CODES_ONE)
+  end
+
   def test_currency_trader_exists
     one = currency_converter(CODES_ONE)
     two = currency_converter(CODES_TWO)
