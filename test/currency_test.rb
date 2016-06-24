@@ -3,7 +3,7 @@ require 'minitest/pride'
 require_relative '../lib/currency.rb'
 
 class CurrencyTest < MiniTest::Test
-  def currency(amount, type)
+  def currency(amount, type = "USD")
     ::Currency.new(amount, type)
   end
 
@@ -45,6 +45,8 @@ class CurrencyTest < MiniTest::Test
   def test_input_equivalence
     assert_equal currency("100", "USD"), currency(100, "USD")
     assert_equal currency("$100", "USD"), currency(100, "USD")
-    refute_equal currency("100¢", "USD"), currency(100, "USD")
+    assert_equal currency("¥100", "JPY"), currency(100, "JPY")
+    assert_equal currency("$100"), currency(100, "USD")
+    assert_equal currency("$100", "USD"), currency("$100")
   end
 end
