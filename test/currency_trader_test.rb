@@ -23,6 +23,12 @@ class CurrencyTraderTest < MiniTest::Test
   end
 
   def test_currency_trader_exists
-    assert currency_trader(CODES_ONE, CODES_TWO, "USD")
+    one = currency_converter(CODES_ONE)
+    two = currency_converter(CODES_TWO)
+    assert currency_trader(one, two, "USD")
   end
+
+  # def test_best_investment
+  #
+  # end
 end

@@ -4,4 +4,8 @@ class CurrencyTrader
     @second_converter = second_converter
     @starting_currency = starting_currency
   end
+
+  # def best_investment
+  #
+  # end
 end
