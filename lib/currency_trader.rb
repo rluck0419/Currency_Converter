@@ -6,7 +6,6 @@ class CurrencyTrader
   end
 
   def best_investment
-    @first_converter.codes.fetch(:USD)
-    # "you should invest in this:"
+    rate = @first_converter.codes.fetch(@starting_currency.to_sym)
   end
 end
