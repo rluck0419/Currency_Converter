@@ -6,15 +6,19 @@ end
 
 class Currency
   attr_reader :amount, :type
+  CODES = {"$" => "USD", "¥" => "JPY"}
 
-  def initialize(amount, type = "USD")
+  def initialize(amount, type = nil)
     if amount.is_a?(Fixnum) || amount.is_a?(Float)
       @amount = amount
+      @type = type
     else
       @amount = amount[/\d+/].to_f
+      @type = type
+      if CODES.key?(amount[/\D/])
+        @type = CODES.fetch(amount[/\D/])
+      end
     end
-
-    @type = type
   end
 
   def ==(other)
