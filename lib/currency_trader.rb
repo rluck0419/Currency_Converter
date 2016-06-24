@@ -7,5 +7,6 @@ class CurrencyTrader
 
   def best_investment
     rate = @first_converter.codes.fetch(@starting_currency.to_sym)
+
   end
 end

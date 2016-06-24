@@ -7,16 +7,18 @@ end
 class Currency
   attr_reader :amount, :type
   CODES = {"$" => "USD", "¥" => "JPY"}
+  NUM_OR_FLOAT = /\d+[.]\d+|\d+/
+  CURRENCY_SYM = /\D/
 
   def initialize(amount, type = nil)
     if amount.is_a?(Fixnum) || amount.is_a?(Float)
       @amount = amount
       @type = type
     else
-      @amount = amount[/\d+[.]\d+|\d+/].to_f
+      @amount = amount[NUM_OR_FLOAT].to_f
       @type = type
-      if CODES.key?(amount[/\D/])
-        @type = CODES.fetch(amount[/\D/])
+      if CODES.key?(amount[CURRENCY_SYM])
+        @type = CODES.fetch(amount[CURRENCY_SYM])
       end
     end
   end
