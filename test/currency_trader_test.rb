@@ -5,6 +5,11 @@ require_relative '../lib/currency_converter.rb'
 require_relative '../lib/currency_trader.rb'
 
 class CurrencyTraderTest < MiniTest::Test
+  # conversion rates at time 1
+  CODES_ONE = {USD: 1.0, EUR: 0.88, GBP: 0.67, JPY: 102.20}
+  # conversion rates at time 2
+  CODES_TWO = {USD: 1.0, EUR: 0.89, GBP: 0.72, JPY: 102.20}
+
   def currency_trader(codes_one, codes_two, starting_currency)
     ::CurrencyTrader.new(codes_one, codes_two, starting_currency)
   end
@@ -15,5 +20,9 @@ class CurrencyTraderTest < MiniTest::Test
 
   def currency(amount, type)
     ::Currency.new(amount, type)
+  end
+
+  def test_currency_trader_exists
+    assert currency_trader(CODES_ONE, CODES_TWO, "USD")
   end
 end
