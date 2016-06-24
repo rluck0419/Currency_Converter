@@ -5,7 +5,8 @@ class CurrencyTrader
     @starting_currency = starting_currency
   end
 
-  # def best_investment
-  #
-  # end
+  def best_investment
+    @first_converter.codes.fetch(:USD)
+    # "you should invest in this:"
+  end
 end
