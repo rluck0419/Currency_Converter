@@ -8,7 +8,7 @@ class CurrencyTraderTest < MiniTest::Test
   # conversion rates at time 1
   CODES_ONE = {USD: 1.0, EUR: 0.88, GBP: 0.67, JPY: 102.20}
   # conversion rates at time 2
-  CODES_TWO = {USD: 1.0, EUR: 0.89, GBP: 0.72, JPY: 102.20}
+  CODES_TWO = {USD: 1.0, EUR: 0.89, GBP: 0.72, JPY: 100.20}
 
   def currency_trader(codes_one, codes_two, starting_currency)
     ::CurrencyTrader.new(codes_one, codes_two, starting_currency)
@@ -39,6 +39,6 @@ class CurrencyTraderTest < MiniTest::Test
   def test_best_investment
     one = currency_converter(CODES_ONE)
     two = currency_converter(CODES_TWO)
-    assert_equal currency_trader(one, two, "USD").best_investment, 1.0
+    assert_equal currency_trader(one, two, "USD").best_investment(1_000_000), "JPY"
   end
 end
