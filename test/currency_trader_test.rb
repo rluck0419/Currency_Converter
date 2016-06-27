@@ -9,6 +9,7 @@ class CurrencyTraderTest < MiniTest::Test
   CODES_ONE = {USD: 1.0, EUR: 0.88, GBP: 0.67, JPY: 102.20}
   # conversion rates at time 2
   CODES_TWO = {USD: 1.0, EUR: 0.91, GBP: 0.75, JPY: 101.91}
+  CODES_ARRAY = [CODES_ONE, CODES_TWO]
   INVESTMENT = "By investing $1000000 in JPY, you'd expect to get back $1002846, with a profit of $2846."
 
   def currency_trader(codes_one, codes_two, starting_currency)

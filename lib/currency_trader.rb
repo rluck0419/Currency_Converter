@@ -26,8 +26,6 @@ class CurrencyTrader
     end
 
     profit_amount = greatest_profit.amount - budget
-    # Currency object:
     "By investing $#{budget} in #{type}, you'd expect to get back $#{greatest_profit.amount}, with a profit of $#{profit_amount}."
-    # type
   end
 end
