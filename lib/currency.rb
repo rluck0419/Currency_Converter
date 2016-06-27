@@ -6,7 +6,7 @@ end
 
 class Currency
   attr_reader :amount, :type
-  CODES = {"$" => "USD", "¥" => "JPY"}
+  CODES = {"$" => "USD", "¥" => "JPY", "€" => "EUR"}
   NUM_OR_FLOAT = /\d+[.]\d+|\d+/
   CURRENCY_SYM = /\D/
 
